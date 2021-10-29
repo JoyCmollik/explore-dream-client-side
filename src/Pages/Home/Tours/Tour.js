@@ -1,5 +1,4 @@
 import React from 'react';
-import { ArrowRight } from '@mui/icons-material';
 import { Link } from 'react-router-dom';
 import tourImg from '../../../Images/Tours.jpg';
 

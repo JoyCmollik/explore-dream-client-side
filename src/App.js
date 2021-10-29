@@ -4,28 +4,30 @@ import {
 	Redirect,
 	Route,
 } from 'react-router-dom';
+import AuthProvider from './contexts/AuthProvider';
 import Home from './Pages/Home/Home/Home';
 import TourDetail from './Pages/Home/Tours/TourDetail';
 import Login from './Pages/Login/Login';
+import PrivateRoute from './Pages/Shared/PrivateRoute/PrivateRoute';
 
 function App() {
 	return (
-		<div className='App'>
+		<AuthProvider>
 			<Router>
 				<Switch>
 					<Redirect exact from='/' to='/home' />
 					<Route path='/home'>
 						<Home />
 					</Route>
-					<Route path='/tourdetail/:id'>
+					<PrivateRoute path='/tourdetail/:id'>
 						<TourDetail />
-					</Route>
+					</PrivateRoute>
 					<Route path='/login'>
 						<Login />
 					</Route>
 				</Switch>
 			</Router>
-		</div>
+		</AuthProvider>
 	);
 }
 
