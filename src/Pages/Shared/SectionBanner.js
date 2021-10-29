@@ -3,7 +3,7 @@ import Header from './Header/Header';
 import TopHeader from './Header/TopHeader';
 import mainBg1 from '../../Images/main-bg1.jpg';
 
-const SectionBanner = () => {
+const SectionBanner = ({ title }) => {
 	return (
 		<div
 			className='bg-cover bg-center bg-no-repeat flex flex-col'
@@ -14,7 +14,7 @@ const SectionBanner = () => {
 				<Header />
 				<div className='flex-grow flex justify-center items-center'>
 					<div className='text-center space-y-4'>
-						<h1 className='text-7xl'>Your Journey Begins</h1>
+						<h1 className='text-7xl'>{title}</h1>
 						<p className='text-lg'>
 							A journey of a 1000 miles starts with a single step.
 							Checkout all the trending <br /> tour options and

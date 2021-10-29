@@ -23,8 +23,8 @@ const Login = () => {
 		handleGoogleSignIn()
 			.then((result) => {
 				setError('');
-				const { displayName, email, photoURL } = result.user;
-				setUser({ displayName, email, photoURL });
+				const { uid, displayName, email, photoURL } = result.user;
+				setUser({ uid, displayName, email, photoURL });
 				history.push(redirectURI);
 			})
 			.catch((error) => {

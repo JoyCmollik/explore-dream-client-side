@@ -1,7 +1,16 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import useAuth from '../../../hooks/useAuth';
 
 const Header = () => {
+	const { user } = useAuth();
+
+	const privateLinksList = [
+		{ to: '/bookings', text: 'My Bookings' },
+		{ to: '/manage-bookings', text: 'Manage All Bookings' },
+		{ to: '/add-tour', text: 'Add New Tour' },
+	];
+
 	return (
 		<header className='flex justify-between items-center text-white py-3'>
 			<div className='logo'>
@@ -18,27 +27,17 @@ const Header = () => {
 				>
 					Home
 				</NavLink>
-				<NavLink
-					activeClassName='text-primary'
-					className='px-4 py-2 font-medium'
-					to='/bookings'
-				>
-					My Bookings
-				</NavLink>
-				<NavLink
-					activeClassName='text-primary'
-					className='px-4 py-2 font-medium'
-					to='/manage-bookings'
-				>
-					Manage All Bookings
-				</NavLink>
-				<NavLink
-					activeClassName='text-primary'
-					className='px-4 py-2 font-medium'
-					to='/add-service'
-				>
-					Add new Service
-				</NavLink>
+				{user &&
+					privateLinksList.map(({ to, text }, index) => (
+						<NavLink
+							key={index}
+							activeClassName='text-primary'
+							className='px-4 py-2 font-medium'
+							to={to}
+						>
+							{text}
+						</NavLink>
+					))}
 			</div>
 		</header>
 	);

@@ -5,9 +5,11 @@ import {
 	Route,
 } from 'react-router-dom';
 import AuthProvider from './contexts/AuthProvider';
+import AddTour from './Pages/AddTour/AddTour';
 import Home from './Pages/Home/Home/Home';
 import TourDetail from './Pages/Home/Tours/TourDetail';
 import Login from './Pages/Login/Login';
+import MyBookings from './Pages/MyBookings/MyBookings';
 import PrivateRoute from './Pages/Shared/PrivateRoute/PrivateRoute';
 
 function App() {
@@ -25,6 +27,12 @@ function App() {
 					<Route path='/login'>
 						<Login />
 					</Route>
+					<PrivateRoute path='/add-tour'>
+						<AddTour />
+					</PrivateRoute>
+					<PrivateRoute path='/bookings'>
+						<MyBookings />
+					</PrivateRoute>
 				</Switch>
 			</Router>
 		</AuthProvider>
