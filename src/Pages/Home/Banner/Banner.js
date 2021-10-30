@@ -10,8 +10,8 @@ const Banner = () => {
 			style={{ backgroundImage: `url(${mainBg1})`, minHeight: '80vh' }}
 		>
 			<TopHeader />
+			<Header />
 			<div className='container mx-auto flex-grow flex flex-col'>
-				<Header />
 				<div className='flex-grow flex flex-col justify-evenly items-center'>
 					<div className='text-center space-y-4'>
 						<h1 className='text-7xl'>Your Journey Begins</h1>

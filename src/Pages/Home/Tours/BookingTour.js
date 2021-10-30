@@ -15,7 +15,9 @@ const BookingTour = (props) => {
 		data.tour_id = _id;
 		data.total_price = data.number_tickets * price;
 		data.tour_img = img_url;
+		data.booking_status = 'pending';
 		// adding this user's id to track all his orders easily
+		data.user_img = user.photoURL;
 		data.user_id = user.uid;
 		console.log(data);
 		client
