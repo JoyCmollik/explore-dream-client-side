@@ -37,7 +37,7 @@ const BookingTour = (props) => {
 	// local component
 	const CustomInput = ({ name, icon, placeholder, value, type }) => {
 		return (
-			<div className='flex items-center space-x-2 px-3 py-4 rounded-lg bg-white shadow'>
+			<div className='flex items-center border-2 space-x-2 px-3 py-4 rounded-lg bg-white'>
 				<span className='text-primary'>{icon}</span>
 				<input
 					className='bg-transparent flex-grow focus:outline-none text-gray-400 focus-within:text-dark'
@@ -87,7 +87,7 @@ const BookingTour = (props) => {
 					icon={<BorderColorIcon fontSize='small' />}
 				/>
 				<textarea
-					className='text-gray-400 focus:outline-none focus-within:text-dark px-3 py-4 rounded-lg bg-white shadow'
+					className='text-gray-400 focus:outline-none focus-within:text-dark px-3 py-4 border-2 rounded-lg bg-white'
 					placeholder='Message'
 					rows='5'
 					{...register('message')}
