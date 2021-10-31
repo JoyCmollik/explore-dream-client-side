@@ -3,12 +3,23 @@ import { useForm } from 'react-hook-form';
 import BorderColorIcon from '@mui/icons-material/BorderColor';
 import useAxios from '../../../hooks/useAxios';
 import useAuth from '../../../hooks/useAuth';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import DesktopDatePicker from '@mui/lab/DatePicker';
+import { format } from 'date-fns';
+import AlternateEmailIcon from '@mui/icons-material/AlternateEmail';
+import ContactsIcon from '@mui/icons-material/Contacts';
+import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
+import AirplaneTicketIcon from '@mui/icons-material/AirplaneTicket';
 
 const BookingTour = (props) => {
 	const { _id, price, img_url } = props.tour;
 	const { register, handleSubmit, reset } = useForm();
 	const { user } = useAuth();
 	const { client } = useAxios();
+	const [departureTime, setDepartureTime] = React.useState(
+		format(new Date(), 'M')
+	);
 
 	const onSubmit = (data) => {
 		// adding the tour that ordered
@@ -17,6 +28,7 @@ const BookingTour = (props) => {
 		data.tour_img = img_url;
 		data.booking_status = 'pending';
 		// adding this user's id to track all his orders easily
+		data.user_departure_item = departureTime;
 		data.user_img = user.photoURL;
 		data.user_id = user.uid;
 		console.log(data);
@@ -37,7 +49,7 @@ const BookingTour = (props) => {
 	// local component
 	const CustomInput = ({ name, icon, placeholder, value, type }) => {
 		return (
-			<div className='flex items-center border-2 space-x-2 px-3 py-4 rounded-lg bg-white'>
+			<div className='flex items-center border-2 space-x-2 px-1 py-2 lg:px-3 lg:py-4 rounded-lg bg-white'>
 				<span className='text-primary'>{icon}</span>
 				<input
 					className='bg-transparent flex-grow focus:outline-none text-gray-400 focus-within:text-dark'
@@ -51,13 +63,39 @@ const BookingTour = (props) => {
 		);
 	};
 
+	const DatePicker = () => {
+		return (
+			<LocalizationProvider dateAdapter={AdapterDateFns}>
+				<DesktopDatePicker
+					label='Custom input'
+					value={departureTime}
+					onChange={(newValue) => {
+						setDepartureTime(format(newValue, 'M'));
+					}}
+					renderInput={({ inputRef, inputProps, InputProps }) => (
+						<div className='flex items-center border-2 space-x-2 px-1 py-2 lg:px-3 lg:py-4 rounded-lg bg-white'>
+							<input
+								className='bg-transparent flex-grow focus:outline-none text-gray-400 focus-within:text-dark'
+								placeholder=' '
+								ref={inputRef}
+								{...inputProps}
+							/>
+							{InputProps?.endAdornment}
+						</div>
+					)}
+				/>
+			</LocalizationProvider>
+		);
+	};
+
 	return (
-		<div className='bg-light p-4 text-white space-y-4'>
+		<div className='bg-light lg:p-4 text-white space-y-4 flex flex-col justify-center items-center'>
 			<h2 className='text-xl text-dark'>Book this tour</h2>
 			<form
-				className='flex flex-col space-y-4 text-sm'
+				className='w-11/12 flex flex-col space-y-4 text-sm'
 				onSubmit={handleSubmit(onSubmit)}
 			>
+				<DatePicker />
 				<CustomInput
 					name='name'
 					value={user?.displayName}
@@ -67,24 +105,24 @@ const BookingTour = (props) => {
 					name='email'
 					type='email'
 					value={user?.email}
-					icon={<BorderColorIcon fontSize='small' />}
+					icon={<AlternateEmailIcon fontSize='small' />}
 				/>
 				<CustomInput
 					name='address'
 					placeholder='Address'
-					icon={<BorderColorIcon fontSize='small' />}
+					icon={<ContactsIcon fontSize='small' />}
 				/>
 				<CustomInput
 					name='phone'
 					type='tel'
 					placeholder='Phone'
-					icon={<BorderColorIcon fontSize='small' />}
+					icon={<ContactPhoneIcon fontSize='small' />}
 				/>
 				<CustomInput
 					name='number_tickets'
 					type='number'
 					placeholder='Number of tickets'
-					icon={<BorderColorIcon fontSize='small' />}
+					icon={<AirplaneTicketIcon fontSize='small' />}
 				/>
 				<textarea
 					className='text-gray-400 focus:outline-none focus-within:text-dark px-3 py-4 border-2 rounded-lg bg-white'

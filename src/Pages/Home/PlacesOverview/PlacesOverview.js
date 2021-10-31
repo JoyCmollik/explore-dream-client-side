@@ -18,7 +18,7 @@ const PlacesOverview = () => {
 			<div className='grid grid-cols-12 gap-2 lg:gap-5 overflow-hidden'>
 				<div className='col-span-8'>
 					<div className='grid grid-cols-1 gap-2 lg:gap-5'>
-						<div className='overflow-hidden relative'>
+						<div className='overflow-hidden rounded-lg relative'>
 							<img
 								className='overview-img'
 								src={africa}
@@ -27,7 +27,7 @@ const PlacesOverview = () => {
 							<h2 className='overview-text'>Africa</h2>
 						</div>
 						<div className='grid grid-cols-2 gap-2 lg:gap-5'>
-							<div className='overflow-hidden relative'>
+							<div className='overflow-hidden rounded-lg relative'>
 								<img
 									className='overview-img'
 									src={thailand}
@@ -35,7 +35,7 @@ const PlacesOverview = () => {
 								/>
 								<h2 className='overview-text'>Thailand</h2>
 							</div>
-							<div className='overflow-hidden relative'>
+							<div className='overflow-hidden rounded-lg relative'>
 								<img
 									className='overview-img'
 									src={china}
@@ -46,7 +46,7 @@ const PlacesOverview = () => {
 						</div>
 					</div>
 				</div>
-				<div className='col-span-4 overflow-hidden relative'>
+				<div className='col-span-4 overflow-hidden rounded-lg relative'>
 					<img className='overview-img' src={india} alt='india' />
 					<h2 className='overview-text'>India</h2>
 				</div>

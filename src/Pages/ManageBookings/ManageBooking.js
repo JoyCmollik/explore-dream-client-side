@@ -67,7 +67,7 @@ const ManageBooking = () => {
 				{/* bookings */}
 				<div className='space-y-2 p-2'>
 					{/* headerTitle */}
-					<div className='px-4 grid grid-cols-10'>
+					<div className='hidden px-4 xl:grid grid-cols-10'>
 						{headingTitle.map((title, index) => (
 							<div
 								className='col-span-2 py-1 text-dark font-medium'

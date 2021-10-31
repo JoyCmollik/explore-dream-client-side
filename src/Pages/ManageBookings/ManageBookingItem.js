@@ -20,7 +20,7 @@ const ManageBookingItem = ({
 	} = bookingItem;
 
 	return (
-		<div className='bg-white px-4 py-2 grid grid-cols-10 rounded-lgshadow'>
+		<div className='bg-white px-4 py-2 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-10 gap-4 rounded-lg shadow'>
 			<div className='col-span-2 py-1 text-gray-500 flex items-center space-x-2'>
 				<Avatar src={user_img} sx={{ width: 28, height: 28 }} />
 				<div className='flex flex-col justify-start items-start'>
@@ -28,20 +28,26 @@ const ManageBookingItem = ({
 					<p className='text-xs'>{email}</p>
 				</div>
 			</div>
-			<div className='col-span-2 py-1 text-gray-500'>
+			<div className='xl:col-span-2 py-1 text-gray-500'>
 				<p className='font-medium'>Explore India</p>
 				<p className='text-xs'>ID: {tour_id}</p>
 			</div>
-			<div className='col-span-2 py-1 text-gray-500'>
+			<div className='xl:col-span-2 py-1 text-gray-500'>
 				<p className='font-medium'>${total_price}</p>
 				<p className='text-xs'>Number of tickets: {number_tickets}</p>
 			</div>
-			<div className='col-span-2 py-1 text-gray-500 flex justify-start items-start'>
-				<p className='bg-purple-200 text-purple-600 px-5 py-1 rounded-3xl'>
+			<div className='xl:col-span-2 py-1 text-gray-500 flex justify-start items-start'>
+				<p
+					className={`${
+						booking_status === 'pending'
+							? 'bg-purple-200 text-purple-700'
+							: 'bg-gray-200 text-green-700'
+					} px-5 py-1 rounded-3xl`}
+				>
 					{booking_status}
 				</p>
 			</div>
-			<div className='col-span-2 py-1 text-gray-500 flex flex-wrap space-x-2'>
+			<div className='col-span-2 py-1 text-gray-500 flex space-x-2'>
 				<button
 					onClick={() => handleDeleteBookings(_id)}
 					className='bg-red-200 text-red-600 flex items-center justify-between px-3 py-1 space-x-2 rounded'

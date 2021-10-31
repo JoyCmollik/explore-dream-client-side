@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
 import Footer from '../Shared/Footer/Footer';
+import googleIcon from '../../Images/google.svg';
 
 const Login = () => {
 	const {
@@ -47,21 +48,31 @@ const Login = () => {
 				</NavLink>
 			</div>
 			<div className='flex-grow flex justify-center items-center'>
-				{!user ? (
-					<button
-						onClick={googleSignIn}
-						className='text-dark bg-primary p-4 rounded'
-					>
-						sign in using google
-					</button>
-				) : (
-					<button
-						onClick={handleSignOut}
-						className='text-dark bg-primary p-4 rounded'
-					>
-						sign out
-					</button>
-				)}
+				<div
+					className='w-full p-10 bg-light rounded-lg shadow-lg'
+					style={{ maxWidth: '400px' }}
+				>
+					{!user ? (
+						<button
+							onClick={googleSignIn}
+							disabled={isLoading}
+							className='text-dark border border-dark w-full px-2 py-4 rounded-lg flex justify-between items-center hover:bg-dark hover:text-white transition duration-100'
+						>
+							<img className='w-8' src={googleIcon} alt='' />{' '}
+							<span className='flex-grow mx-auto text-xl font-medium uppercase'>
+								sign in using google
+							</span>
+						</button>
+					) : (
+						<button
+							onClick={handleSignOut}
+							disabled={isLoading}
+							className='text-dark border border-dark w-full px-2 py-4 rounded-lg hover:bg-dark hover:text-white transition duration-100'
+						>
+							sign out
+						</button>
+					)}
+				</div>
 			</div>
 			<Footer />
 		</div>

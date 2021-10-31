@@ -9,9 +9,11 @@ const Home = () => {
 	return (
 		<div className='space-y-20'>
 			<Banner />
-			<Introduction />
-			<Tours />
-			<PlacesOverview />
+			<div className='px-1 lg:px-0 space-y-20'>
+				<Introduction />
+				<Tours />
+				<PlacesOverview />
+			</div>
 			<Footer />
 		</div>
 	);

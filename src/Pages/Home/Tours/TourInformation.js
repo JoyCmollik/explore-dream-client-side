@@ -44,12 +44,12 @@ const TourInformation = ({ tour = {} }) => {
 	];
 
 	return (
-		<div className='text-sm space-y-10'>
+		<div className='text-sm space-y-10 p-1 lg-p-0'>
 			{/* heading */}
-			<div className='flex justify-between'>
+			<div className='md:flex justify-between space-y-4'>
 				<div className='space-y-2'>
 					<h2 className='text-3xl'>{tour_title}</h2>
-					<div className='flex flex-wrap'>
+					<div className='flex flex-wrap items-center'>
 						{headingInfo.map(({ icon, info }, index) => (
 							<p key={index} className='text-gray-400 mb-2 mr-5'>
 								<span className='text-primary mr-1'>
@@ -68,62 +68,59 @@ const TourInformation = ({ tour = {} }) => {
 				</h4>
 			</div>
 			{/* Description */}
-			<p className='text-gray-500 tracking-wider leading-7'>
+
+			<p className='text-gray-500 lg:tracking-wider lg:leading-7'>
 				{tour_description}
 			</p>
 			{/* Rating */}
 			<div className='flex items-center'>
 				<Rating
 					name='half-rating-read'
-					defaultValue={4.5}
+					defaultValue={0}
 					precision={0.5}
 					readOnly
 				/>
-				<span className='text-gray-400 ml-2'>(2 Reviews)</span>
+				<span className='text-gray-400 ml-2'>(Not Reviewed)</span>
 			</div>
 			{/* listed info */}
-			<div>
-				<Divider />
-				<div className='py-4 flex justify-between'>
+			<div className=''>
+				<div className='py-4 md:flex justify-between border-b border-t'>
 					<h2 className='text-xl font-medium'>
 						Departure/Return Location
 					</h2>
-					<p className='text-gray-500'>{tour_return_location}</p>
+					<p className='text-gray-500 text-xs md:text-sm'>
+						{tour_return_location}
+					</p>
 				</div>
-				<Divider />
 
-				<div className='py-4 flex justify-between'>
+				<div className='py-4 md:flex justify-between border-b'>
 					<h2 className='text-xl font-medium'>Departure Time</h2>
-					<p className='text-gray-500'>
+					<p className='text-gray-500 text-xs md:text-sm'>
 						Please arrive by 19 minutes early for a departure at{' '}
 						{tour_departure_time}
 					</p>
 				</div>
-				<Divider />
 
-				<div className='py-4 flex justify-between'>
+				<div className='py-4 md:flex justify-between border-b'>
 					<h2 className='text-xl font-medium'>Return Time</h2>
-					<p className='text-gray-500'>
+					<p className='text-gray-500 text-xs md:text-sm'>
 						Approximately {tour_return_time}
 					</p>
 				</div>
-				<Divider />
 
-				<div className='py-4 flex justify-between'>
+				<div className='py-4 md:flex justify-between border-b'>
 					<h2 className='text-xl font-medium'>Included</h2>
-					<p className='text-gray-500'>
+					<p className='text-gray-500 text-xs md:text-sm'>
 						104-100, Babar Rd Fire Brigade Lane, Delhi , India
 					</p>
 				</div>
-				<Divider />
 
-				<div className='py-4 flex justify-between'>
+				<div className='py-4 md:flex justify-between border-b'>
 					<h2 className='text-xl font-medium'>Not Included</h2>
-					<p className='text-gray-500'>
+					<p className='text-gray-500 text-xs md:text-sm'>
 						104-100, Babar Rd Fire Brigade Lane, Delhi , India
 					</p>
 				</div>
-				<Divider />
 			</div>
 		</div>
 	);

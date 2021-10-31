@@ -19,6 +19,10 @@ h2 {
 	background-repeat: no-repeat !important;
 }
 
+.text-overflow-control {
+	word-wrap: break-word !important;
+}
+
 /* making classes using @apply */
 
 .input-style {
@@ -46,5 +50,5 @@ h2 {
 }
 
 .overview-text {
-	@apply text-2xl lg:text-4xl text-white absolute left-10 bottom-10;
+	@apply text-lg md:text-2xl lg:text-4xl text-white absolute left-5 bottom-5 lg:left-10 lg:bottom-10;
 }

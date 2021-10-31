@@ -13,11 +13,13 @@ const SectionBanner = ({ title, short_title, banner_img }) => {
 			}}
 		>
 			<TopHeader />
+			<Header />
 			<div className='container mx-auto flex-grow flex flex-col'>
-				<Header />
 				<div className='flex-grow flex justify-center items-center'>
 					<div className='text-center space-y-4'>
-						<h1 className='text-7xl'>{title}</h1>
+						<h1 className='text-2xl lg:text-5xl xl:text-7xl'>
+							{title}
+						</h1>
 						<p className='text-lg'>{short_title}</p>
 					</div>
 				</div>

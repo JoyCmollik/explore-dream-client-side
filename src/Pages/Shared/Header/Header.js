@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../../hooks/useAuth';
+import MobileNav from './MobileNav';
 
 const Header = ({ mode }) => {
 	const { user } = useAuth();
@@ -13,7 +14,7 @@ const Header = ({ mode }) => {
 
 	return (
 		<div className={mode === 'dark' ? 'bg-dark' : ''}>
-			<header className='container mx-auto flex justify-between items-center text-white py-3 '>
+			<header className='hidden container mx-auto lg:flex justify-between items-center text-white py-3 '>
 				<div className='logo'>
 					<h2 className='text-2xl'>
 						explore
@@ -41,6 +42,9 @@ const Header = ({ mode }) => {
 						))}
 				</div>
 			</header>
+			<div className='lg:hidden'>
+				<MobileNav />
+			</div>
 		</div>
 	);
 };

@@ -42,7 +42,7 @@ const Tours = () => {
 	};
 
 	return (
-		<div className='text-dark space-y-10'>
+		<div className='text-dark space-y-10 overflow-hidden'>
 			<div className='container mx-auto flex justify-between items-start'>
 				<div className='space-y-1'>
 					<h4 className='text-primary font-semibold'>POPULARLY</h4>
