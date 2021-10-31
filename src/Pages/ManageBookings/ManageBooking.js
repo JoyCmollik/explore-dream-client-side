@@ -4,12 +4,15 @@ import useAxios from '../../hooks/useAxios';
 import Footer from '../Shared/Footer/Footer';
 import Header from '../Shared/Header/Header';
 import ManageBookingItem from './ManageBookingItem';
+import { useSnackbar } from 'notistack';
 
 const ManageBooking = () => {
 	const [allBookings, setAllBookings] = useState([]);
 	const { client } = useAxios();
 	const [isDataUpdated, setIsDataUpdated] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
+	const { enqueueSnackbar } = useSnackbar();
+	let variant = 'success';
 
 	useEffect(() => {
 		client.get('/allbookings').then((response) => {
@@ -27,7 +30,6 @@ const ManageBooking = () => {
 		client.put(`/updatebooking/${_id}`, data).then((response) => {
 			setIsDataUpdated(false);
 			setIsLoading(false);
-			console.log(response.data);
 		});
 	};
 
@@ -40,7 +42,9 @@ const ManageBooking = () => {
 				if (response.data.deletedCount === 1) {
 					setIsDataUpdated(false);
 					setIsLoading(false);
-					alert('We have cancelled booking! :-(');
+					enqueueSnackbar('Booking has been deleted successfully!', {
+						variant,
+					});
 				}
 			});
 		}

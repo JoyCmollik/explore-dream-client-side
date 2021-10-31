@@ -4,6 +4,7 @@ import Slider from 'react-slick';
 import Tour from './Tour';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import { Skeleton } from '@mui/material';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
@@ -41,6 +42,20 @@ const Tours = () => {
 		],
 	};
 
+	const TourSkeleton = () => {
+		return (
+			<Skeleton
+				variant='rectangular'
+				sx={{
+					maxWidth: '800px',
+					height: '500px',
+					mr: 2,
+					borderRadius: '25px',
+				}}
+			></Skeleton>
+		);
+	};
+
 	return (
 		<div className='text-dark space-y-10 overflow-hidden'>
 			<div className='container mx-auto flex justify-between items-start'>
@@ -64,8 +79,11 @@ const Tours = () => {
 				</div>
 			</div>
 			<Slider ref={(c) => (slider = c)} {...settings}>
-				{tours &&
-					tours.map((tour) => <Tour key={tour._id} tour={tour} />)}
+				{tours
+					? tours.map((tour) => <Tour key={tour._id} tour={tour} />)
+					: [...Array(10).keys()].map((value) => (
+							<TourSkeleton key={value} />
+					  ))}
 			</Slider>
 		</div>
 	);
