@@ -7,7 +7,7 @@ const Banner = () => {
 	return (
 		<div
 			className='bg-cover bg-center bg-no-repeat flex flex-col'
-			style={{ backgroundImage: `url(${mainBg1})`, minHeight: '80vh' }}
+			style={{ backgroundImage: `url(${mainBg1})`, minHeight: '100vh' }}
 		>
 			<TopHeader />
 			<Header />
@@ -21,7 +21,7 @@ const Banner = () => {
 							make us your partner while you visit your dream.
 						</p>
 					</div>
-					<div className='px-10 py-7 bg-white'>
+					<div className='hidden lg:block px-10 py-7 bg-white'>
 						<form className='flex items-center '>
 							<input
 								className='px-2 py-1 bg-none border focus:outline-none'

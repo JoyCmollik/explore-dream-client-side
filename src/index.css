@@ -13,8 +13,38 @@ h2 {
 	font-family: 'Lora', serif;
 }
 
+.bg-fix {
+	background-size: cover !important;
+	background-position: center !important;
+	background-repeat: no-repeat !important;
+}
+
 /* making classes using @apply */
 
 .input-style {
 	@apply w-full px-2 py-4 border border-gray-400 rounded text-gray-400 focus:outline-none focus-within:text-gray-900 focus-within:border-gray-300;
+}
+
+.carousel-next {
+	@apply border-2 border-primary flex justify-center items-center text-primary rounded-full p-2;
+}
+
+.carousel-prev {
+	@apply border-2 border-primary flex justify-center items-center text-primary rounded-full p-2;
+}
+
+.btn {
+	@apply px-4;
+}
+
+.heading {
+	@apply text-main text-3xl md:text-4xl lg:text-5xl leading-snug;
+}
+
+.overview-img {
+	@apply rounded-lg object-cover w-full h-full transform hover:scale-105 transition duration-500;
+}
+
+.overview-text {
+	@apply text-2xl lg:text-4xl text-white absolute left-10 bottom-10;
 }

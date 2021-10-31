@@ -20,7 +20,7 @@ const Header = ({ mode }) => {
 						<span className='text-primary'>Dream</span>
 					</h2>
 				</div>
-				<div className=''>
+				<div className='hidden lg:block'>
 					<NavLink
 						activeClassName='text-primary'
 						className='px-4 py-2 font-medium'
