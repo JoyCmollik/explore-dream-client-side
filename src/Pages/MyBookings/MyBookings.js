@@ -40,7 +40,7 @@ const MyBookings = () => {
 		<div className='flex flex-col min-h-screen space-y-20'>
 			<SectionBanner title='My Bookings' />
 			<div className='container mx-auto flex-grow grid grid-cols-12 text-dark'>
-				<div className='col-span-4'>
+				<div className='col-span-12 lg:col-span-4 mb-10 lg:mb-0'>
 					<NavLink
 						className='space-x-2 flex items-center'
 						to='/bookings'
@@ -51,7 +51,7 @@ const MyBookings = () => {
 						<span>My Bookings</span>
 					</NavLink>
 				</div>
-				<div className='col-span-8 space-y-4'>
+				<div className='col-span-12 lg:col-span-8 space-y-4 place-items-center px-4 lg:px-0'>
 					{bookings.length ? (
 						bookings.map((booking) => (
 							<MyBookingItem

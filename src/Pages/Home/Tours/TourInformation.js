@@ -1,9 +1,11 @@
 import React from 'react';
+import Rating from '@mui/material/Rating';
 import AccessTimeFilledIcon from '@mui/icons-material/AccessTimeFilled';
 import GroupIcon from '@mui/icons-material/Group';
 import PublicIcon from '@mui/icons-material/Public';
 import TravelExploreIcon from '@mui/icons-material/TravelExplore';
-import { Divider, Rating } from '@mui/material';
+import DoneAllIcon from '@mui/icons-material/DoneAll';
+import RemoveDoneIcon from '@mui/icons-material/RemoveDone';
 
 const TourInformation = ({ tour = {} }) => {
 	const {
@@ -22,12 +24,13 @@ const TourInformation = ({ tour = {} }) => {
 		tour_return_time,
 		tour_service_included,
 		tour_service_notIncluded,
+		tour_package,
 	} = tour;
 
 	const headingInfo = [
 		{
 			icon: <AccessTimeFilledIcon sx={{ fontSize: '18px' }} />,
-			info: '10 Days 9 Nights',
+			info: tour_package,
 		},
 		{
 			icon: <GroupIcon sx={{ fontSize: '18px' }} />,
@@ -110,16 +113,36 @@ const TourInformation = ({ tour = {} }) => {
 
 				<div className='py-4 md:flex justify-between border-b'>
 					<h2 className='text-xl font-medium'>Included</h2>
-					<p className='text-gray-500 text-xs md:text-sm'>
-						104-100, Babar Rd Fire Brigade Lane, Delhi , India
-					</p>
+					<div className='text-gray-500 text-xs md:text-sm flex items-start flex-wrap justify-around'>
+						{tour_service_included
+							? tour_service_included.map((service, index) => (
+									<p key={index} className='mr-3'>
+										<DoneAllIcon
+											fontSize='small'
+											sx={{ color: '#FFCC05' }}
+										/>{' '}
+										{service}
+									</p>
+							  ))
+							: 'NA'}
+					</div>
 				</div>
 
 				<div className='py-4 md:flex justify-between border-b'>
 					<h2 className='text-xl font-medium'>Not Included</h2>
-					<p className='text-gray-500 text-xs md:text-sm'>
-						104-100, Babar Rd Fire Brigade Lane, Delhi , India
-					</p>
+					<div className='text-gray-500 text-xs md:text-sm flex items-start flex-wrap justify-around'>
+						{tour_service_notIncluded
+							? tour_service_notIncluded.map((service, index) => (
+									<p key={index} className='mr-3'>
+										<RemoveDoneIcon
+											fontSize='small'
+											sx={{ color: 'red' }}
+										/>{' '}
+										{service}
+									</p>
+							  ))
+							: 'NA'}
+					</div>
 				</div>
 			</div>
 		</div>

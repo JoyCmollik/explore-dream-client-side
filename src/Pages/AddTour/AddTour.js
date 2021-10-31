@@ -67,6 +67,7 @@ const AddTour = () => {
 		client
 			.post('/addtour', data)
 			.then(function (response) {
+				reset();
 				alert('sent data');
 				console.log(response);
 			})
@@ -211,7 +212,7 @@ const AddTour = () => {
 										</select>
 									</div>
 									{/* input */}
-									<div className='col-span-4 space-y-1'>
+									<div className='col-span-12 lg:col-span-4 space-y-1'>
 										<label className='uppercase font-medium'>
 											Tour Type
 										</label>
@@ -234,7 +235,7 @@ const AddTour = () => {
 										</select>
 									</div>
 									{/* input */}
-									<div className='col-span-4 space-y-1'>
+									<div className='col-span-6 lg:col-span-4 space-y-1'>
 										<label className='uppercase font-medium'>
 											Departure Time*
 										</label>
@@ -253,7 +254,7 @@ const AddTour = () => {
 										</LocalizationProvider>
 									</div>
 									{/* input */}
-									<div className='col-span-4 space-y-1'>
+									<div className='col-span-6 lg:col-span-4 space-y-1'>
 										<label className='uppercase font-medium'>
 											Return Time*
 										</label>
@@ -272,7 +273,7 @@ const AddTour = () => {
 										</LocalizationProvider>
 									</div>
 									{/* input */}
-									<div className='col-span-12 space-y-1'>
+									<div className='col-span-6 space-y-1'>
 										<label className='uppercase font-medium'>
 											Return Location
 										</label>
@@ -284,6 +285,41 @@ const AddTour = () => {
 												'tour_return_location'
 											)}
 										/>
+									</div>
+									{/* input */}
+									<div className='col-span-6 space-y-1'>
+										<label className='uppercase font-medium'>
+											Tour Package
+										</label>
+										<select
+											className='input-style'
+											{...register('tour_package')}
+										>
+											<option
+												className='bg-white text-primary'
+												value='10 Day 9 Nights'
+											>
+												10 Days 9 Nights
+											</option>
+											<option
+												className='bg-white text-primary'
+												value='7 Days 6 Nights'
+											>
+												7 Days 6 Nights
+											</option>
+											<option
+												className='bg-white text-primary'
+												value='15 Days 14 Nights'
+											>
+												15 Days 14 Nights
+											</option>
+											<option
+												className='bg-white text-primary'
+												value='15 Days 14 Nights'
+											>
+												30 Days 29 Nights
+											</option>
+										</select>
 									</div>
 									{/* input */}
 									<div className='col-span-12 space-y-1'>
@@ -351,7 +387,7 @@ const AddTour = () => {
 							</div>
 							{/* submit button */}
 							<input
-								className='w-full px-2 py-4 bg-primary border'
+								className='w-full px-2 py-4 bg-primary rounded-lg transform hover:scale-95 transition duration-100'
 								type='submit'
 								value='Add'
 							/>

@@ -13,25 +13,28 @@ import ContactPhoneIcon from '@mui/icons-material/ContactPhone';
 import AirplaneTicketIcon from '@mui/icons-material/AirplaneTicket';
 
 const BookingTour = (props) => {
-	const { _id, price, img_url } = props.tour;
+	const { _id, tour_price, tour_title, tour_img, tour_departure_time } =
+		props.tour;
 	const { register, handleSubmit, reset } = useForm();
 	const { user } = useAuth();
 	const { client } = useAxios();
-	const [departureTime, setDepartureTime] = React.useState(
+	const [departureDate, setDepartureDate] = React.useState(
 		format(new Date(), 'M')
 	);
 
 	const onSubmit = (data) => {
 		// adding the tour that ordered
 		data.tour_id = _id;
-		data.total_price = data.number_tickets * price;
-		data.tour_img = img_url;
+		data.total_price = parseInt(data.number_tickets) * parseInt(tour_price);
+		data.tour_img = tour_img;
 		data.booking_status = 'pending';
-		// adding this user's id to track all his orders easily
-		data.user_departure_item = departureTime;
+		data.tour_title = tour_title;
+		data.user_departure_date = departureDate;
+		data.user_departure_time = tour_departure_time;
 		data.user_img = user.photoURL;
 		data.user_id = user.uid;
-		console.log(data);
+
+		// sending data to server
 		client
 			.post('/addbooking', data)
 			.then((response) => {
@@ -68,9 +71,9 @@ const BookingTour = (props) => {
 			<LocalizationProvider dateAdapter={AdapterDateFns}>
 				<DesktopDatePicker
 					label='Custom input'
-					value={departureTime}
+					value={departureDate}
 					onChange={(newValue) => {
-						setDepartureTime(format(newValue, 'M'));
+						setDepartureDate(format(newValue, 'M'));
 					}}
 					renderInput={({ inputRef, inputProps, InputProps }) => (
 						<div className='flex items-center border-2 space-x-2 px-1 py-2 lg:px-3 lg:py-4 rounded-lg bg-white'>

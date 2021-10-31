@@ -6,7 +6,7 @@ import mainBg1 from '../../Images/main-bg1.jpg';
 const SectionBanner = ({ title, short_title, banner_img }) => {
 	return (
 		<div
-			className='bg-cover bg-center bg-no-repeat flex flex-col'
+			className='bg-fix flex flex-col'
 			style={{
 				backgroundImage: `url(${banner_img ? banner_img : mainBg1})`,
 				minHeight: '60vh',

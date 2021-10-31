@@ -1,3 +1,4 @@
+import { Divider } from '@mui/material';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -82,6 +83,10 @@ const Footer = () => {
 						<p className='text-white'>info@exploreDream.com</p>
 					</div>
 				</div>
+				<Divider sx={{ background: '#FFFFFF', my: 4 }} />
+				<p className='py-2 text-sm text-sub text-center'>
+					Developed by &copy; Joy C Mollik
+				</p>
 			</div>
 		</div>
 	);
